@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdf version="1.5">
+  <model name="GazeboRobot">
+    <pose>0 0 -0.07 0 0 0</pose>
+    <plugin name="clock" filename="libgz_clock.so">
+      <topic>/gazebo/frc/time</topic>
+    </plugin>
+    <link name="Base">
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <pose>-0.0178903426225337 -0.015 -0.0517977865348972 1.5707963267949 0 1.5707963267949</pose>
+      <must_be_base_link>1</must_be_base_link>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>0.0633989203311473</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>3.31035139619025E-05</ixx>
+          <ixy>2.38901873856179E-22</ixy>
+          <ixz>7.13949723586589E-22</ixz>
+          <iyy>2.5751976158721E-05</iyy>
+          <iyz>4.7210789490425E-06</iyz>
+          <izz>1.76110386740557E-05</izz>
+        </inertia>
+      </inertial>
+      <collision name="Base_collision">
+        <pose>-0.00098348899136059 -0.0365626323568204 -0.0593690129077276 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/Base_col.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode />
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="Base_visual">
+        <pose>-0.00098348899136059 -0.0365626323568204 -0.0593690129077276 0 0 0</pose>
+        <material>
+          <ambient>0 0 0 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+        </material>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/Base.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="slider">
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <pose>0.00587231231907853 -0.015 -0.0158399632331222 1.5707963267949 0 1.5707963267949</pose>
+      <must_be_base_link>0</must_be_base_link>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>0.00058681924793033</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>9.79617214556126E-09</ixx>
+          <ixy>8.06557760449834E-26</ixy>
+          <ixz>5.6559373241011E-24</ixz>
+          <iyy>2.88949506297856E-08</iyy>
+          <iyz>5.70837236496272E-26</iyz>
+          <izz>1.9711589223549E-08</izz>
+        </inertia>
+      </inertial>
+      <collision name="slider_collision">
+        <pose>-0.000983488991360585 -0.0725204556585954 -0.0831316678493399 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/slider_col.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode />
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="slider_visual">
+        <pose>-0.000983488991360585 -0.0725204556585954 -0.0831316678493399 0 0 0</pose>
+        <material>
+          <ambient>1 0 0.501960784313725 1</ambient>
+          <diffuse>1 0 0.501960784313725 1</diffuse>
+        </material>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/slider.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="Base-slider" type="prismatic">
+      <parent>Base</parent>
+      <child>slider</child>
+      <pose>0.01 0 -0.00587231231907853 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <dynamics>
+          <damping>0.25</damping>
+          <friction>0.25</friction>
+        </dynamics>
+        <limit>
+          <upper>0.00958996323312218</upper>
+          <lower>-0.0229100367668778</lower>
+          <effort>1</effort>
+        </limit>
+      </axis>
+    </joint>
+    <link name="rotator">
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <pose>0.022476121743647 -0.015 -0.015898732412457 1.5707963267949 0 1.5707963267949</pose>
+      <must_be_base_link>0</must_be_base_link>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>0.000269180752069671</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>2.392187673887E-09</ixx>
+          <ixy>3.7079342496468E-26</ixy>
+          <ixz>5.41489274861946E-25</ixz>
+          <iyy>4.53238360240746E-09</iyy>
+          <iyz>3.33236251033893E-11</iyz>
+          <izz>2.4201030303729E-09</izz>
+        </inertia>
+      </inertial>
+      <collision name="rotator_collision">
+        <pose>-0.000983488991360587 -0.0724616864792605 -0.0997354772739084 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/rotator_col.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode />
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="rotator_visual">
+        <pose>-0.000983488991360587 -0.0724616864792605 -0.0997354772739084 0 0 0</pose>
+        <material>
+          <ambient>0.501960784313725 0 0.250980392156863 1</ambient>
+          <diffuse>0.501960784313725 0 0.250980392156863 1</diffuse>
+        </material>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/rotator.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="slider-rotator" type="revolute">
+      <parent>slider</parent>
+      <child>rotator</child>
+      <pose>1.73472347597681E-18 -3.52879991433186E-06 -0.00372612174364705 0 0 0</pose>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <damping>0.25</damping>
+          <friction>0.25</friction>
+        </dynamics>
+        <limit>
+          <upper>0.5</upper>
+          <lower>-0.5</lower>
+          <effort>1</effort>
+        </limit>
+      </axis>
+    </joint>
+    <link name="FR_wheel">
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <pose>0.00600000000000002 -0.0325 -0.066 1.5707963267949 0 1.5707963267949</pose>
+      <must_be_base_link>0</must_be_base_link>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>0.00407150407905237</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>2.11718212110724E-07</ixx>
+          <ixy>1.01781989435236E-25</ixy>
+          <ixz>9.3057818912215E-26</ixz>
+          <iyy>1.14341406220054E-07</iyy>
+          <iyz>1.60908692003361E-25</iyz>
+          <izz>1.14341406220054E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name="FR_wheel_collision">
+        <pose>0.0165165110086394 -0.0223604188917176 -0.0832593555302614 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/FR_wheel_col.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode />
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="FR_wheel_visual">
+        <pose>0.0165165110086394 -0.0223604188917176 -0.0832593555302614 0 0 0</pose>
+        <material>
+          <ambient>0.501960784313725 1 1 1</ambient>
+          <diffuse>0.501960784313725 1 1 1</diffuse>
+        </material>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/FR_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="Base-FR_wheel" type="revolute">
+      <parent>Base</parent>
+      <child>FR_wheel</child>
+      <pose>1.38777878078145E-17 -3.46944695195361E-18 -2.77555756156289E-17 0 0 0</pose>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <damping>0.25</damping>
+          <friction>0.25</friction>
+        </dynamics>
+        <limit>
+          <effort>1</effort>
+        </limit>
+      </axis>
+    </joint>
+    <link name="FL_wheel">
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <pose>0.00600000000000002 0.0025 -0.066 1.5707963267949 0 1.5707963267949</pose>
+      <must_be_base_link>0</must_be_base_link>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>0.00407150407905237</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>2.11718212110724E-07</ixx>
+          <ixy>1.53588561700444E-39</ixy>
+          <ixz>7.95558949690885E-24</ixz>
+          <iyy>1.14341406220054E-07</iyy>
+          <iyz>3.66218509647685E-39</iyz>
+          <izz>1.14341406220054E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name="FL_wheel_collision">
+        <pose>-0.0184834889913606 -0.0223604188917176 -0.0832593555302614 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/FL_wheel_col.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode />
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="FL_wheel_visual">
+        <pose>-0.0184834889913606 -0.0223604188917176 -0.0832593555302614 0 0 0</pose>
+        <material>
+          <ambient>0.501960784313725 0.501960784313725 1 1</ambient>
+          <diffuse>0.501960784313725 0.501960784313725 1 1</diffuse>
+        </material>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/FL_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="Base-FL_wheel" type="revolute">
+      <parent>Base</parent>
+      <child>FL_wheel</child>
+      <pose>1.38777878078145E-17 -3.46944695195361E-18 -1.38777878078145E-17 0 0 0</pose>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <damping>0.25</damping>
+          <friction>0.25</friction>
+        </dynamics>
+        <limit>
+          <effort>1</effort>
+        </limit>
+      </axis>
+    </joint>
+    <link name="BR_wheel">
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <pose>-0.046 -0.0325 -0.066 1.5707963267949 0 1.5707963267949</pose>
+      <must_be_base_link>0</must_be_base_link>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>0.00407150407905237</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>2.11718212110724E-07</ixx>
+          <ixy>2.13093068767554E-40</ixy>
+          <ixz>9.30578189122135E-26</ixz>
+          <iyy>1.14341406220054E-07</iyy>
+          <iyz>2.59158490443996E-42</iyz>
+          <izz>1.14341406220054E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name="BR_wheel_collision">
+        <pose>0.0165165110086394 -0.0223604188917176 -0.0312593555302614 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/BR_wheel_col.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode />
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="BR_wheel_visual">
+        <pose>0.0165165110086394 -0.0223604188917176 -0.0312593555302614 0 0 0</pose>
+        <material>
+          <ambient>0 1 0 1</ambient>
+          <diffuse>0 1 0 1</diffuse>
+        </material>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/BR_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="Base-BR_wheel" type="revolute">
+      <parent>Base</parent>
+      <child>BR_wheel</child>
+      <pose>2.08166817117217E-17 0 0 0 0 0</pose>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <damping>0.25</damping>
+          <friction>0.25</friction>
+        </dynamics>
+        <limit>
+          <effort>1</effort>
+        </limit>
+      </axis>
+    </joint>
+    <link name="BL_wheel">
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <pose>-0.046 0.00250000000000001 -0.066 1.5707963267949 0 1.5707963267949</pose>
+      <must_be_base_link>0</must_be_base_link>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>0.00407150407905237</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>2.11718212110724E-07</ixx>
+          <ixy>2.21388986598337E-39</ixy>
+          <ixz>7.86253167799663E-24</ixz>
+          <iyy>1.14341406220054E-07</iyy>
+          <iyz>3.66218509647685E-39</iyz>
+          <izz>1.14341406220054E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name="BL_wheel_collision">
+        <pose>-0.0184834889913606 -0.0223604188917176 -0.0312593555302614 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/BL_wheel_col.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode />
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="BL_wheel_visual">
+        <pose>-0.0184834889913606 -0.0223604188917176 -0.0312593555302614 0 0 0</pose>
+        <material>
+          <ambient>0 0 0.501960784313725 1</ambient>
+          <diffuse>0 0 0.501960784313725 1</diffuse>
+        </material>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://GazeboRobot/meshes/BL_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="Base-BL_wheel" type="revolute">
+      <parent>Base</parent>
+      <child>BL_wheel</child>
+      <pose>1.38777878078145E-17 -3.46944695195361E-18 0 0 0 0</pose>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <damping>0.25</damping>
+          <friction>0.25</friction>
+        </dynamics>
+        <limit>
+          <effort>1</effort>
+        </limit>
+      </axis>
+    </joint>
+    <plugin name="Base-slider_motor" filename="libgz_dc_motor.so">
+      <joint>Base-slider</joint>
+      <topic>/gazebo/frc/simulator/pwm/3</topic>
+      <multiplier>1</multiplier>
+    </plugin>
+    <plugin name="slider-rotator_motor" filename="libgz_dc_motor.so">
+      <joint>slider-rotator</joint>
+      <topic>/gazebo/frc/simulator/pwm/4</topic>
+      <multiplier>1</multiplier>
+    </plugin>
+    <plugin name="Base-FR wheel_motor" filename="libgz_dc_motor.so">
+      <joint>Base-FR_wheel</joint>
+      <topic>/gazebo/frc/simulator/pwm/1</topic>
+      <multiplier>1</multiplier>
+    </plugin>
+    <plugin name="Base-FL wheel_motor" filename="libgz_dc_motor.so">
+      <joint>Base-FL_wheel</joint>
+      <topic>/gazebo/frc/simulator/pwm/2</topic>
+      <multiplier>1</multiplier>
+    </plugin>
+  </model>
+</sdf>
