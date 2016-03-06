@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdf version="1.5">
+  <model name="test">
+    <pose>0 0 0 0 0 0</pose>
+    <plugin name="clock" filename="libgz_clock.so">
+      <topic>/gazebo/frc/time</topic>
+    </plugin>
+    <link name="base">
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <pose>0.0196980341134005 0.154380022333244 0.261152305235887 0 0 0</pose>
+      <must_be_base_link>1</must_be_base_link>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>32.7823001646924</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>0.293649694356258</ixx>
+          <ixy>1.76623904178862E-17</ixy>
+          <ixz>1.17093834628434E-17</ixz>
+          <iyy>0.406911500823462</iyy>
+          <iyz>2.17560846825539E-19</iyz>
+          <izz>0.293649694356258</izz>
+        </inertia>
+      </inertial>
+      <collision name="base_collision">
+        <pose>-0.0196980341134005 -0.154380022333244 -0.261152305235887 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://test/meshes/base_col.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode />
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="base_visual">
+        <pose>-0.0196980341134005 -0.154380022333244 -0.261152305235887 0 0 0</pose>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+        </material>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://test/meshes/base.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="top">
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <pose>0.0196980341133985 0.253505388393347 0.261152305235885 0 0 0</pose>
+      <must_be_base_link>0</must_be_base_link>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>17.3588499176538</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>0.281013551860313</ixx>
+          <ixy>5.16478339588306E-18</ixy>
+          <ixz>6.20345754745369E-17</ixz>
+          <iyy>0.55479424958827</iyy>
+          <iyz>3.78115507654322E-18</iyz>
+          <izz>0.281013551860313</izz>
+        </inertia>
+      </inertial>
+      <collision name="top_collision">
+        <pose>-0.0196980341133985 -0.253505388393347 -0.261152305235885 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://test/meshes/top_col.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode />
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="top_visual">
+        <pose>-0.0196980341133985 -0.253505388393347 -0.261152305235885 0 0 0</pose>
+        <material>
+          <ambient>0 1 0.501960784313725 1</ambient>
+          <diffuse>0 1 0.501960784313725 1</diffuse>
+        </material>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://test/meshes/top.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="base-top" type="revolute">
+      <parent>base</parent>
+      <child>top</child>
+      <pose>-1.07552855510562E-16 0 -1.11022302462516E-16 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <dynamics>
+          <damping>0.25</damping>
+          <friction>0.1</friction>
+        </dynamics>
+        <limit>
+          <effort>1</effort>
+        </limit>
+      </axis>
+    </joint>
+    <plugin name="base-top_motor" filename="libgz_dc_motor.so">
+      <joint>base-top</joint>
+      <topic>/gazebo/frc/simulator/pwm/0</topic>
+      <multiplier>1</multiplier>
+    </plugin>
+  </model>
+</sdf>
